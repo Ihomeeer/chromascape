@@ -8,6 +8,18 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  z-index: 20;
+  transition: height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+
+.sectionDimmed {
+  transition: opacity 0.4s ease;
+  opacity: 0.3;
+}
+
+.section:hover {
+  height: 500px;
+  transition: height 0.4s ease;
 }
 
 .link {
@@ -30,33 +42,56 @@
   right: 0;
   margin: auto 20px auto auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  color: aliceblue;
+
   text-align: center;
 }
 
 .textNature {
-  font-family: "Sofia Sans Condensed", serif;
+  font-family: "Sofia Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
 .textUrban {
-  font-family: "Kelly Slab", serif;
+  font-family: "Exo 2", serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
 .header {
+  color: rgba(255, 255, 255, 0.603);
+  margin: auto -340px auto auto;
   font-weight: 500;
   font-size: 160px;
+  line-height: 200px;
+  transition: transform 0.4s ease;
+}
+
+.section:hover .header {
+  transform: translateX(-390px); // смещение заголовка влево при ховере
+  transition: transform 0.4s ease;
 }
 
 .quotation {
+  color: rgb(255, 255, 255);
   width: 300px;
-  margin-left: 20px;
+  height: 200px;
+  margin: auto 60px auto 40px;
+  opacity: 0; // изначально элемент скрыт
+  transform: translateX(70px); // начинает появляться справа
+  transition: opacity 0.4s ease, transform 0.4s ease; // плавное появление
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+.section:hover .quotation {
+  opacity: 1;
+  transform: translateX(0); // смещение к своей позиции при ховере
 }
 
 .quotationText {
@@ -67,10 +102,11 @@
 .quotationAuthor {
   font-size: 16px;
   text-align: right;
+  align-self: flex-end;
 }
 
 .pictureContainer {
-  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
 }
 
 .picture {
