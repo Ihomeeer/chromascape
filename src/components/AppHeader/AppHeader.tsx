@@ -9,7 +9,7 @@ const AppHeader: React.FC = () => {
         <a className={styles.logoLink}>
           <img className={styles.logo} src={logoPath} alt="ChromaScape logo" />
         </a>
-        <h1 className={styles.title}>ChromaScape: Визуализация идей</h1>
+        <p className={styles.title}>ChromaScape: Визуализация идей</p>
       </div>
     </header>
   )

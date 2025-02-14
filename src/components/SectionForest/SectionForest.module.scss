@@ -1,0 +1,32 @@
+@use '/src/styles/defaultVariables.scss';
+
+.section {
+  width: 100%;
+  margin: 40px auto;
+  background-size: cover;
+}
+
+.headerContainer {
+  width: 100%;
+  height: 120px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #242424;
+}
+
+.header {
+  @include defaultVariables.sofia-sans-font;
+  font-size: 100px;
+  font-weight: 800;
+  color: #07070711;
+  background: url(../../images/forest/deciduous.jpg);
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+}
+
+
