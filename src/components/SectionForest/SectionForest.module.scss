@@ -14,15 +14,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #242424;
+  background-color: #272727;
 }
 
 .header {
   @include defaultVariables.sofia-sans-font;
   font-size: 100px;
   font-weight: 800;
-  color: #07070711;
-  background: url(../../images/forest/deciduous.jpg);
+  color: #ff000011;
+  background: url(../../images/forest/tropical.jpg);
   background-size: cover;
   -webkit-background-clip: text;
   background-clip: text;

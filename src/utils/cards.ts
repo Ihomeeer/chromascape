@@ -42,7 +42,7 @@ export const cardsData = [
     author: 'М. Ю. Горшенёв',
     imageUrl: '/src/images/mainPage/Space/Space',
     imageAlt: 'Космос',
-    isUrban: true,
+    isUrban: false,
   },
   {
     id: 'city',
@@ -51,7 +51,7 @@ export const cardsData = [
     author: 'Э. М. Ремарк',
     imageUrl: '/src/images/mainPage/City/City',
     imageAlt: 'Город',
-    isUrban: true,
+    isUrban: false,
   },
 
 ];
