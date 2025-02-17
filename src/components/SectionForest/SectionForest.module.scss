@@ -2,10 +2,10 @@
 
 .section {
   width: 100%;
-  margin: 40px auto;
+  margin: auto;
   background-size: cover;
   // background-image: url(../../images/forest/tropical.jpg);
-  border-radius: 10px;
+  // border-radius: 10px;
   box-sizing: border-box;
 }
 
@@ -17,10 +17,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(124, 124, 124, 0.76);
+  border-bottom: 2px solid #414141;
   overflow: hidden;
   // mix-blend-mode: multiply;
-  border-radius: 10px;
+  // border-radius: 10px;
 
 }
 
@@ -33,7 +33,7 @@
   background-size: cover;
   -webkit-background-clip: text;
   background-clip: text;
-  mix-blend-mode: multiply;
+  // mix-blend-mode: multiply;
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
 }
 

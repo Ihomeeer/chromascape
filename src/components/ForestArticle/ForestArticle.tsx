@@ -21,7 +21,7 @@ const ForestArticle: React.FC<ForestArticleProps> = ({
       {title && <h3 className={styles.title}>
         {title}
       </h3>}
-      <p className={styles.text}>
+      <p className={title ? styles.titledText : styles.text}>
         {text}
       </p>
       <picture className={styles.pictureContainer}>
