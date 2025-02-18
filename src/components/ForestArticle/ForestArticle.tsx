@@ -20,7 +20,7 @@ const ForestArticle: React.FC<ForestArticleProps> = ({
   const jpegSrc = `${imageURL}.jpg`;
   return (
     <article className={styles.article}>
-      {title && <h3 className={styles.title}>
+      {title && <h3 className={`${styles.title} ${align == 'left' ? styles.leftAlign : styles.rightAlign}`}>
         {title}
       </h3>}
       <p className={`${styles.text} ${title ? styles.titledText : styles.untitledText} ${align == 'left' ? styles.leftAlign : styles.rightAlign}`}>
@@ -28,7 +28,7 @@ const ForestArticle: React.FC<ForestArticleProps> = ({
       </p>
       <picture className={`${styles.pictureContainer} ${align == 'left' ? styles.rightAlign : styles.leftAlign}`}>
         <source srcSet={avifSrc} type="image/avif" />
-        <img className={styles.picture} src={jpegSrc} alt={imageAlt} />
+        <img className={styles.picture} src={jpegSrc} alt={imageAlt} loading="lazy" />
       </picture>
     </article>
   )
