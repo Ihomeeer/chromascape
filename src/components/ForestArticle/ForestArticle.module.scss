@@ -2,55 +2,65 @@
 
 .article {
   width: 100%;
-  margin: 40px auto;
-  // min-height: 600px;
+  margin: auto;
   height: 700px;
   box-sizing: border-box;
-  // border: 2px solid red;
-  // background-color: rgba(120, 121, 122, 0.705);
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 640px 640px;
+  grid-template-rows: 100px 600px;
+  gap: 0;
+  background-color: rgba(105, 103, 103, 0.24);
 }
 
-
+.title {
+  @include defaultVariables.sofia-sans-font;
+  width: 100%;
+  height: 100%;
+  font-size: 40px;
+  font-weight: bold;
+  color: rgba(245, 245, 245, 0.753);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1;
+}
 
 .text {
   @include defaultVariables.sofia-sans-font;
-  width: 50%;
+  width: 100%;
   height: 100%;
-  padding: 0 60px;
+  padding: 0 10px 10px 10px;
   margin: auto;
   font-size: 20px;
   font-weight: 400;
-  text-align: left;
-  color: whitesmoke;
+  text-align: justify;
+  color: rgba(245, 245, 245, 0.753);
   opacity: 0; // изначально элемент скрыт
   transform: translateX(100%) translateY(150%) rotate(45deg);
   transition-delay: 0s, 0.7s;
   transition: opacity 0.7s ease, transform 0.7s ease; // плавное появление
+}
+
+.untitledText {
+  grid-row: 1 / 3;
 }
 
 .titledText {
-  @include defaultVariables.sofia-sans-font;
-  width: 50%;
-  height: 100%;
-  padding: 0 60px;
-  margin: auto;
-  font-size: 20px;
-  font-weight: 400;
-  text-align: left;
-  color: whitesmoke;
-  opacity: 0; // изначально элемент скрыт
-  transform: translateX(100%) translateY(150%) rotate(45deg);
-  transition-delay: 0s, 0.7s;
-  transition: opacity 0.7s ease, transform 0.7s ease; // плавное появление
+  grid-row: 2;
+}
+
+.leftAlign {
+  grid-column: 1;
+}
+
+.rightAlign {
+  grid-column: 2;
 }
 
 .pictureContainer {
-  width: 50%;
+  width: 100%;
   height: 100%;
+  grid-row: 1 /3;
   opacity: 0; // изначально элемент скрыт
   transform: translateX(-100%) translateY(150%) rotate(-45deg);
   transition: opacity 0.7s ease, transform 0.7s ease; // плавное появление
@@ -60,7 +70,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
 }
 
 .active {

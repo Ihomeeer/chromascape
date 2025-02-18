@@ -6,6 +6,7 @@ interface ForestArticleProps {
   title?: string;
   imageURL: string;
   imageAlt: string;
+  align: string;
 }
 
 const ForestArticle: React.FC<ForestArticleProps> = ({
@@ -13,6 +14,7 @@ const ForestArticle: React.FC<ForestArticleProps> = ({
   title,
   imageURL,
   imageAlt,
+  align,
 }) => {
   const avifSrc = `${imageURL}.avif`;
   const jpegSrc = `${imageURL}.jpg`;
@@ -21,10 +23,10 @@ const ForestArticle: React.FC<ForestArticleProps> = ({
       {title && <h3 className={styles.title}>
         {title}
       </h3>}
-      <p className={title ? styles.titledText : styles.text}>
+      <p className={`${styles.text} ${title ? styles.titledText : styles.untitledText} ${align == 'left' ? styles.leftAlign : styles.rightAlign}`}>
         {text}
       </p>
-      <picture className={styles.pictureContainer}>
+      <picture className={`${styles.pictureContainer} ${align == 'left' ? styles.rightAlign : styles.leftAlign}`}>
         <source srcSet={avifSrc} type="image/avif" />
         <img className={styles.picture} src={jpegSrc} alt={imageAlt} />
       </picture>
