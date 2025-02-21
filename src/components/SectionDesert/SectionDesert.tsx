@@ -1,9 +1,12 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 import styles from './SectionDesert.module.scss';
-import { desertHeader, headerText } from "../../utils/dataDesert";
+import { desertHeader, headerText, desertPhotos } from "../../utils/dataDesert";
+
 
 import AppHeader from "../AppHeader/AppHeader";
 import AppFooter from "../AppFooter/AppFooter";
+import ParalaxPhoto from "../ParalaxPhoto/ParalaxPhoto";
 
 const SectionDesert: React.FC = () => {
 
@@ -26,7 +29,15 @@ const SectionDesert: React.FC = () => {
         </div>
 
         <ul className={styles.list}>
-
+          {desertPhotos.map((data) => {
+            const uniqueId = uuidv4();
+            return (
+              <li className={styles.listItem} key={uniqueId}>
+                <ParalaxPhoto
+                  {...data} />
+              </li>
+            )
+          })}
         </ul>
 
       </section>
