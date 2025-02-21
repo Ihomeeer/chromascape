@@ -1,0 +1,28 @@
+@use '/src/styles/defaultVariables.scss';
+
+.section {
+  width: 100%;
+  margin: auto auto 40px auto;
+  padding-bottom: 10px;
+  background-size: cover;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.headerContainer {
+  width: 100%;
+  height: 140px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.header {
+  @include defaultVariables.sofia-sans-font;
+  font-size: 100px;
+  font-weight: bold;
+  color: rgba(245, 245, 245, 0.753);
+}

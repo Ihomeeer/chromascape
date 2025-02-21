@@ -1,0 +1,12 @@
+@mixin sofia-sans-font {
+  font-family: "Sofia Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+@mixin exo-font {
+  font-family: "Exo 2", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

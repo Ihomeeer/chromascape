@@ -1,0 +1,73 @@
+.section {
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.headerContainer {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  background-image: url(../../images/mainPage/Desert/Desert.avif);
+  background-size: cover;
+}
+
+.header {
+  width: 100%;
+  margin: 20px auto auto 40px;
+  height: fit-content;
+  font-size: 300px;
+  font-family: "Sofia Sans", serif;
+  color: rgba(255, 255, 255, 0.603);
+  font-optical-sizing: auto;
+  font-weight: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.header span {
+  height: 100%;
+  width: fit-content;
+  line-height: 240px;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.headerText {
+  width: auto;
+  height: fit-content;
+  margin: auto auto 0 auto;
+  padding: 0 40px 15px;
+  font-family: "Sofia Sans", serif;
+  color: rgba(255, 255, 255, 0.774);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 22px;
+  text-align: justify;
+}
+
+/* Первый слог ("Пу") */
+.syllable-1 {
+  // justify-self: end;
+  // align-self: flex-start;
+}
+
+/* Второй слог ("сты") */
+.syllable-2 {
+  // align-self:flex-end;
+  // justify-self: flex-end;
+  // transform: translateY(0.07em);
+
+}
+
+/* Третий слог ("ня") */
+.syllable-3 {}

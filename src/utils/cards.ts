@@ -1,6 +1,6 @@
 export const cardsData = [
   {
-    id: 'Forest',
+    id: 'forest',
     title: 'Лес',
     description: 'Где б я ни странствовал, везде припоминаю Мои душистые леса.',
     author: 'К. Д. Бальмонт',
@@ -9,7 +9,7 @@ export const cardsData = [
     isUrban: false,
   },
   {
-    id: 'Desert',
+    id: 'desert',
     title: 'Пустыня',
     description: 'Обиды записывайте на песке, благодеяния вырезайте на мраморе.',
     author: 'П. Буаст',
@@ -18,7 +18,7 @@ export const cardsData = [
     isUrban: false,
   },
   {
-    id: 'Ocean',
+    id: 'ocean',
     title: 'Океан',
     description: 'Довольно неуместно называть эту планету — Земля, когда очевидно, что она — Океан.',
     author: 'А. Ч. Кларк',
@@ -27,7 +27,7 @@ export const cardsData = [
     isUrban: false,
   },
   {
-    id: 'Mountain',
+    id: 'mountain',
     title: 'Горы',
     description: 'Самый малый пригорок заслоняет нам самую высокую гору.',
     author: 'М. О. Эбнер-Эшенбах',
@@ -36,22 +36,22 @@ export const cardsData = [
     isUrban: false,
   },
   {
-    id: 'Space',
+    id: 'space',
     title: 'Космос',
     description: 'В космос. В космос всем! Быстро в космос собрались, рюкзаки собрали! Полетели! В космос.',
     author: 'М. Ю. Горшенёв',
     imageUrl: '/src/images/mainPage/Space/Space',
     imageAlt: 'Космос',
-    isUrban: true,
+    isUrban: false,
   },
   {
-    id: 'City',
+    id: 'city',
     title: 'Город',
     description: 'Самый чудесный город — это тот, где человек счастлив.',
     author: 'Э. М. Ремарк',
     imageUrl: '/src/images/mainPage/City/City',
     imageAlt: 'Город',
-    isUrban: true,
+    isUrban: false,
   },
 
 ];

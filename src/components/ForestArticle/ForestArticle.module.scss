@@ -1,0 +1,80 @@
+@use '/src/styles/defaultVariables.scss';
+
+.article {
+  width: 100%;
+  margin: auto;
+  height: 700px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 640px 640px;
+  grid-template-rows: 100px 600px;
+  gap: 0;
+}
+
+.title {
+  @include defaultVariables.sofia-sans-font;
+  width: 100%;
+  height: 100%;
+  font-size: 50px;
+  font-weight: bold;
+  color: rgba(245, 245, 245, 0.753);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1;
+  opacity: 0; // изначально элемент скрыт
+  transition-delay: 0.7s, 0.7s;
+  transition: opacity 0.7s ease, transform 0.7s ease; // плавное появление
+}
+
+.text {
+  @include defaultVariables.sofia-sans-font;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px 10px 20px;
+  margin: auto;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: justify;
+  color: rgba(245, 245, 245, 0.753);
+  opacity: 0; // изначально элемент скрыт
+  transition-delay: 0.7s, 0.7s;
+  transition: opacity 0.7s ease, transform 0.7s ease; // плавное появление
+}
+
+.untitledText {
+  grid-row: 1 / 3;
+}
+
+.titledText {
+  grid-row: 2;
+}
+
+.leftAlign {
+  grid-column: 1;
+  transform: translateX(-70%) translateY(70%) rotate(-45deg);
+}
+
+.rightAlign {
+  grid-column: 2;
+  transform: translateX(70%) translateY(70%) rotate(45deg);
+}
+
+.pictureContainer {
+  width: 100%;
+  height: 100%;
+  grid-row: 1 /3;
+  opacity: 0.7; // изначально элемент скрыт
+  transition: opacity 0.7s ease, transform 0.7s ease; // плавное появление
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.active {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
