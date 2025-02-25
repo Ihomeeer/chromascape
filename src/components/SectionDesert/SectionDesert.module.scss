@@ -10,7 +10,9 @@
 
 .headerContainer {
   width: 100%;
-  height: fit-content;
+  height: 80vh;
+  // margin-top: 40px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
@@ -45,7 +47,7 @@
 .headerText {
   width: auto;
   height: fit-content;
-  margin: auto auto 0 auto;
+  margin: auto auto 35px auto;
   padding: 0 40px 15px;
   font-family: "Sofia Sans", serif;
   color: rgba(255, 255, 255, 0.774);
@@ -54,20 +56,3 @@
   font-size: 22px;
   text-align: justify;
 }
-
-/* Первый слог ("Пу") */
-.syllable-1 {
-  // justify-self: end;
-  // align-self: flex-start;
-}
-
-/* Второй слог ("сты") */
-.syllable-2 {
-  // align-self:flex-end;
-  // justify-self: flex-end;
-  // transform: translateY(0.07em);
-
-}
-
-/* Третий слог ("ня") */
-.syllable-3 {}
