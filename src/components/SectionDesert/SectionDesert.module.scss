@@ -10,8 +10,7 @@
 
 .headerContainer {
   width: 100%;
-  height: 80vh;
-  // margin-top: 40px;
+  height: fit-content;
   margin-bottom: 40px;
   display: flex;
   flex-direction: row;
@@ -24,7 +23,7 @@
   width: 100%;
   margin: 20px auto auto 40px;
   height: fit-content;
-  font-size: 300px;
+  font-size: 240px;
   font-family: "Sofia Sans", serif;
   color: rgba(255, 255, 255, 0.603);
   font-optical-sizing: auto;
@@ -38,7 +37,7 @@
 .header span {
   height: 100%;
   width: fit-content;
-  line-height: 240px;
+  line-height: 180px;
   padding: 0;
   box-sizing: border-box;
   display: flex;
