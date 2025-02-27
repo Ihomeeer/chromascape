@@ -1,8 +1,11 @@
 :root {
-  /* background-color: #242424; */
-  background-color: #383330;
+  background-color: #242424;
+  /* background-color: #383330; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: #727272 #3d3d3d;
 }
+
