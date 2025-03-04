@@ -1,35 +1,42 @@
 import React from "react";
 import styles from './SectionForest.module.scss';
-import articleStyles from '../ForestArticle/ForestArticle.module.scss'
+import articleStyles from '../ForestArticle/ForestArticle.module.scss';
+import galleryStyles from '../GalleryVertical/GalleryVertical.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 import { forestHeader } from '../../utils/dataForest';
-import { forestArticle, forestTypes } from "../../utils/dataForest";
+import { forestArticle, forestTypes, forestGallery } from "../../utils/dataForest";
 
 import AppHeader from "../AppHeader/AppHeader";
 import AppFooter from "../AppFooter/AppFooter";
 import ForestArticle from "../ForestArticle/ForestArticle";
+import GalleryVertical from "../GalleryVertical/GalleryVertical";
 
-// interface SectionForestProps {
-
-// }
 
 const SectionForest: React.FC = () => {
 
   React.useEffect(() => {
-    const contentNodes = document.querySelectorAll(`.${articleStyles.title}, .${articleStyles.text}, .${articleStyles.pictureContainer}, .${articleStyles.titledText}`);
+    const contentNodes = document.querySelectorAll(`.${articleStyles.title}, .${articleStyles.text}, .${articleStyles.pictureContainer}, .${articleStyles.titledText}, .${galleryStyles.listItem}`);
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add(articleStyles.active); // Добавление класса .active
+            const target = entry.target;
+            if (target.classList.contains(articleStyles.title) ||
+              target.classList.contains(articleStyles.text) ||
+              target.classList.contains(articleStyles.pictureContainer) ||
+              target.classList.contains(articleStyles.titledText)) {
+              target.classList.add(articleStyles.active); // Для элементов из articleStyles
+            } else if (target.classList.contains(galleryStyles.listItem)) {
+              target.classList.add(galleryStyles.active); // Для элементов из galleryStyles
+            }
             observer.unobserve(entry.target); // Прекращаение наблюдения за элементом, так как не нужен уже
           }
         });
       },
       {
         threshold: 0.1, // Срабатывает при 10% видимости
-        rootMargin: '0px 0px 300px 0px', // Расширение области видимости обсервера вниз на 700 пикселей
+        rootMargin: '0px 0px 300px 0px', // Расширение области видимости обсервера вниз на 300 пикселей
       }
     );
 
@@ -52,9 +59,11 @@ const SectionForest: React.FC = () => {
         <div className={styles.headerContainer}>
           <h1 className={styles.header}>{forestHeader}</h1>
         </div>
+
         <ForestArticle
           {...forestArticle}
         />
+
         <ul className={styles.list}>
           {forestTypes.map((data) => {
             const uniqueId = uuidv4();
@@ -66,6 +75,10 @@ const SectionForest: React.FC = () => {
             )
           })}
         </ul>
+
+        <GalleryVertical
+          forestGallery={forestGallery}
+        />
 
       </section>
       <AppFooter />

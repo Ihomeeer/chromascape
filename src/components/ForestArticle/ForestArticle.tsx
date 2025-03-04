@@ -4,7 +4,7 @@ import styles from './ForestArticle.module.scss';
 interface ForestArticleProps {
   text: string;
   title?: string;
-  imageURL: string;
+  imageUrl: string;
   imageAlt: string;
   align: string;
 }
@@ -12,12 +12,12 @@ interface ForestArticleProps {
 const ForestArticle: React.FC<ForestArticleProps> = ({
   text,
   title,
-  imageURL,
+  imageUrl,
   imageAlt,
   align,
 }) => {
-  const avifSrc = `${imageURL}.avif`;
-  const jpegSrc = `${imageURL}.jpg`;
+  const avifSrc = `${imageUrl}.avif`;
+  const jpegSrc = `${imageUrl}.jpg`;
   return (
     <article className={styles.article}>
       {title && <h3 className={`${styles.title} ${align == 'left' ? styles.leftAlign : styles.rightAlign}`}>

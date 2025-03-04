@@ -1,0 +1,86 @@
+.section {
+  width: 100%;
+  margin: 60px auto;
+  height: fit-content;
+  box-sizing: border-box;
+
+}
+
+.list {
+  width: 100%;
+  height: fit-content;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Гибкие колонки */
+  grid-auto-rows: 300px;
+  /* Базовая высота строк */
+  gap: 5px;
+  /* Отступы между элементами */
+  grid-auto-flow: dense;
+  /* Плотное заполнение */
+  overflow: visible;
+
+}
+
+.listItem {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  /* Добавляем flex для выравнивания */
+  align-items: stretch;
+  /* Растягиваем содержимое */
+  justify-content: stretch;
+  /* Растягиваем содержимое */
+}
+
+.listItem:nth-child(2n) {
+  grid-column: span 2;
+  /* Ширина на 2 колонки */
+}
+
+.listItem:nth-child(3n) {
+  grid-row: span 2;
+  /* Высота на 2 строки */
+}
+
+.listItem:nth-child(5n) {
+  grid-column: span 3;
+  /* Ширина на 3 колонки */
+}
+
+.pictureContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.pictureContainer:hover {
+  box-shadow: inset 0 0 5px 8px rgba(255, 255, 255, 0.2); /* Внутренняя тень */
+  transition: box-shadow 0.3s ease;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  position: relative;
+  z-index: -1;
+}
+
+.fadeIn {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.active {
+  opacity: 1;
+}
