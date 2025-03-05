@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from './SectionForest.module.scss';
 import articleStyles from '../ForestArticle/ForestArticle.module.scss';
 import galleryStyles from '../GalleryVertical/GalleryVertical.module.scss';
 import { v4 as uuidv4 } from 'uuid';
+import { searchImages } from '../../utils/unsplashAPI';
 import { forestHeader } from '../../utils/dataForest';
-import { forestArticle, forestTypes, forestGallery } from "../../utils/dataForest";
+import { forestArticle, forestTypes } from "../../utils/dataForest";
 
 import AppHeader from "../AppHeader/AppHeader";
 import AppFooter from "../AppFooter/AppFooter";
@@ -13,9 +14,11 @@ import GalleryVertical from "../GalleryVertical/GalleryVertical";
 
 
 const SectionForest: React.FC = () => {
+  const [images, setImages] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const contentNodes = document.querySelectorAll(`.${articleStyles.title}, .${articleStyles.text}, .${articleStyles.pictureContainer}, .${articleStyles.titledText}, .${galleryStyles.listItem}`);
+
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,6 +48,12 @@ const SectionForest: React.FC = () => {
       observer.observe(node);
     });
 
+    const loadImages = async () => {
+      const images = await searchImages('forest');
+      setImages(images);
+    };
+
+    loadImages();
     // Очистка наблюдателя при размонтировании компонента
     return () => {
       contentNodes.forEach((node) => {
@@ -52,6 +61,8 @@ const SectionForest: React.FC = () => {
       });
     };
   }, []); // Хук запускается при монтировании
+
+
   return (
     <>
       <AppHeader />
@@ -77,7 +88,7 @@ const SectionForest: React.FC = () => {
         </ul>
 
         <GalleryVertical
-          forestGallery={forestGallery}
+          forestGallery={images}
         />
 
       </section>
