@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './AppHeader.module.scss';
 import logoPath from '../../images/logo/logo_white.png';
 
