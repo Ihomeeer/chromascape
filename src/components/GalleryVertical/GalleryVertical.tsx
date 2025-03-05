@@ -16,6 +16,7 @@ const GalleryVertical: React.FC<GalleryVerticalProps> = ({
 }) => {
   return (
     <section className={styles.section}>
+      <h2 className={styles.galleryTitle}>Природа в кадре</h2>
       <ul className={styles.list}>
         {forestGallery.map((data) => {
           const avifSrc = `${data.imageUrl}.avif`;

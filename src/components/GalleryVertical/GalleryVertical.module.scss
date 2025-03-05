@@ -1,10 +1,20 @@
+@use '/src/styles/defaultVariables.scss';
+
 .section {
   width: 100%;
   margin: 60px auto;
   height: fit-content;
   box-sizing: border-box;
-
 }
+
+.galleryTitle {
+  margin: 60px auto 40px;
+  @include defaultVariables.sofia-sans-font;
+  font-size: 40px;
+  font-weight: bold;
+  color: rgba(245, 245, 245, 0.753);
+}
+
 
 .list {
   width: 100%;
@@ -28,26 +38,20 @@
   height: 100%;
   margin: auto;
   display: flex;
-  /* Добавляем flex для выравнивания */
   align-items: stretch;
-  /* Растягиваем содержимое */
   justify-content: stretch;
-  /* Растягиваем содержимое */
 }
 
 .listItem:nth-child(2n) {
   grid-column: span 2;
-  /* Ширина на 2 колонки */
 }
 
 .listItem:nth-child(3n) {
   grid-row: span 2;
-  /* Высота на 2 строки */
 }
 
 .listItem:nth-child(5n) {
-  grid-column: span 3;
-  /* Ширина на 3 колонки */
+  grid-column: span 1;
 }
 
 .pictureContainer {

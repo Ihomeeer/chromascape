@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from './SectionForest.module.scss';
 import articleStyles from '../ForestArticle/ForestArticle.module.scss';
 import galleryStyles from '../GalleryVertical/GalleryVertical.module.scss';
@@ -15,11 +15,24 @@ import GalleryVertical from "../GalleryVertical/GalleryVertical";
 
 const SectionForest: React.FC = () => {
   const [images, setImages] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false); // Состояние загрузки данных, для регулировки работы обсервера
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const contentNodesRef = useRef<NodeListOf<Element> | null>(null);
 
   useEffect(() => {
-    const contentNodes = document.querySelectorAll(`.${articleStyles.title}, .${articleStyles.text}, .${articleStyles.pictureContainer}, .${articleStyles.titledText}, .${galleryStyles.listItem}`);
+    const loadImages = async () => {
+      try {
+        const images = await searchImages('forest');
+        setImages(images);
+        setIsLoaded(true); // Данные загружены, все ок
+      } catch (error) {
+        console.error('Ошибка загрузки изображений:', error);
+      }
+    };
 
+    loadImages();
 
+    // Инициализация обсервера
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -29,39 +42,56 @@ const SectionForest: React.FC = () => {
               target.classList.contains(articleStyles.text) ||
               target.classList.contains(articleStyles.pictureContainer) ||
               target.classList.contains(articleStyles.titledText)) {
-              target.classList.add(articleStyles.active); // Для элементов из articleStyles
+              target.classList.add(articleStyles.active);
             } else if (target.classList.contains(galleryStyles.listItem)) {
-              target.classList.add(galleryStyles.active); // Для элементов из galleryStyles
+              target.classList.add(galleryStyles.active);
             }
-            observer.unobserve(entry.target); // Прекращаение наблюдения за элементом, так как не нужен уже
+            observer.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.1, // Срабатывает при 10% видимости
-        rootMargin: '0px 0px 300px 0px', // Расширение области видимости обсервера вниз на 300 пикселей
+        threshold: 0, // Нулевой порог, чтобы срабатывало при любом пересечении
+        rootMargin: '0px 0px 300px 0px', // Чтобы было видно работу анимации
       }
     );
 
-    // Наблюдение за всеми элементами из массива
-    contentNodes.forEach((node) => {
-      observer.observe(node);
-    });
+    observerRef.current = observer;
 
-    const loadImages = async () => {
-      const images = await searchImages('forest');
-      setImages(images);
-    };
-
-    loadImages();
-    // Очистка наблюдателя при размонтировании компонента
-    return () => {
+    // Функция для наблюдения за элементами
+    const observeElements = () => {
+      const contentNodes = document.querySelectorAll(
+        `.${articleStyles.title}, .${articleStyles.text}, .${articleStyles.pictureContainer}, .${articleStyles.titledText}, .${galleryStyles.listItem}`
+      );
       contentNodes.forEach((node) => {
-        observer.unobserve(node);
+        observer.observe(node);
       });
+      contentNodesRef.current = contentNodes;
     };
-  }, []); // Хук запускается при монтировании
 
+    // Наблюдение за существующими элементами - это текст и изображения в коротки статьях в начале страницы
+    observeElements();
+
+    // Проверка и перезапуск наблюдения, если данные загружены (для галереи)
+    const checkAndObserve = () => {
+      if (isLoaded) {
+        observeElements(); // Повторная проверка и слежение за всеми элементами
+      }
+    };
+
+    const interval = setInterval(checkAndObserve, 100); // Проверка каждые 100 мс, чтобы все не ломалось по мере прогрузки новых компонент изображенийв DOM
+
+    // Очистка наблюдателя и интервала при размонтировании
+    return () => {
+      if (observerRef.current) {
+        contentNodesRef.current?.forEach((node) => {
+          observerRef.current?.unobserve(node);
+        });
+        observerRef.current.disconnect();
+      }
+      clearInterval(interval);
+    };
+  }, [isLoaded]); // Зависимость от состояния загрузки необходима, так как без нее ломается обсервер (из-за асинхронной загрузки картинок из Unsplash)
 
   return (
     <>
