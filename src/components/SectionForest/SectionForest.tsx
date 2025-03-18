@@ -9,6 +9,7 @@ import { forestArticle, forestTypes } from "../../utils/dataForest";
 
 import AppHeader from "../AppHeader/AppHeader";
 import AppFooter from "../AppFooter/AppFooter";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import ForestArticle from "../ForestArticle/ForestArticle";
 import GalleryVertical from "../GalleryVertical/GalleryVertical";
 
@@ -95,6 +96,7 @@ const SectionForest: React.FC = () => {
 
   return (
     <>
+      <ProgressBar height="10px" color="rgba(245, 245, 245, 0.753)" />
       <AppHeader />
       <section className={styles.section}>
         <div className={styles.headerContainer}>
